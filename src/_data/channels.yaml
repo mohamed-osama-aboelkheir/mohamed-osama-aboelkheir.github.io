@@ -1,0 +1,22 @@
+# ---------------------------------------------------------------------------
+# "Watch / Read" — the places I publish. Order here = order on the page.
+# accent: any CSS colour; used for the tile and hover glow.
+# mark:   "play" for a play triangle, otherwise the text drawn in the tile.
+# ---------------------------------------------------------------------------
+- name: YouTube
+  description: Full video walkthroughs of every challenge solution
+  url: https://www.youtube.com/playlist?list=PLDrEVWZfxVmg
+  accent: "#ff0033"
+  mark: play
+
+- name: Medium
+  description: AppSec Untangled — long-form posts on application security
+  url: https://medium.com/appsec-untangled
+  accent: "#1a8917"
+  mark: M
+
+- name: dev.to
+  description: Cross-posted articles and shorter write-ups
+  url: "" # TODO: your dev.to profile URL, e.g. https://dev.to/<username>
+  accent: "#3b49df"
+  mark: DEV

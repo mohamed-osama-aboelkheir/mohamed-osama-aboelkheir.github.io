@@ -1,0 +1,53 @@
+# ---------------------------------------------------------------------------
+# Talks. One entry per TALK, with every conference it was given at nested
+# under `appearances` — so a talk given three times renders once, with three
+# venues beneath it. Talks are sorted automatically by their most recent
+# appearance date; you do not need to keep this file in order.
+#
+# Per talk:
+#   title           required
+#   abstract        one or two lines
+#   slides_url      the canonical deck (optional)
+#   recording_url   a canonical recording (optional)
+#   tags            optional list of short labels
+#
+# Per appearance:
+#   event, location, date   required (date as YYYY-MM-DD)
+#   status: upcoming        marks it as not-yet-given; hides slides/video links
+#   slides_url              optional override when that venue's deck differed
+#   recording_url           optional, per-venue recording
+#
+# ⚠️ The entries below are PLACEHOLDERS to show the shape — replace with real
+#    talks, or delete them and the Talks section disappears on its own.
+# ---------------------------------------------------------------------------
+
+- title: "Beyond STRIDE: Doors, Windows & Holes"
+  abstract: >-
+    A concrete methodology for threat modelling web applications that a team
+    can actually run in an hour, without a whiteboard full of acronyms.
+  slides_url: "" # TODO
+  tags:
+    - Threat Modelling
+  appearances:
+    - event: ThreatModCon
+      location: San Francisco, US
+      date: 2026-10-15
+      status: upcoming
+
+- title: "Reviewing Code Like an Attacker"
+  abstract: >-
+    How to read an unfamiliar codebase the way someone looking for a way in
+    reads it — and why "run the scanner" keeps missing the interesting bugs.
+  slides_url: "" # TODO
+  recording_url: "" # TODO
+  tags:
+    - Secure Code Review
+  appearances:
+    - event: OWASP Global AppSec
+      location: Lisbon, PT
+      date: 2026-06-25
+      recording_url: "" # TODO
+    - event: BSides Cairo
+      location: Cairo, EG
+      date: 2026-03-14
+      slides_url: "" # TODO — set only if this venue's deck differed

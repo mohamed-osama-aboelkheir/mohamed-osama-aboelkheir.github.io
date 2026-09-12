@@ -1,0 +1,20 @@
+{
+  "name": "mohamed-osama-aboelkheir.github.io",
+  "version": "1.0.0",
+  "description": "Personal portfolio / links landing page",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "private": "true",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "js-yaml": "^5.4.1"
+  }
+}

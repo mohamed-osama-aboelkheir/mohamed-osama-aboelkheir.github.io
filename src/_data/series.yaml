@@ -1,0 +1,33 @@
+# ---------------------------------------------------------------------------
+# "Series" — the recurring bodies of work worth highlighting.
+# status: free text badge (e.g. "New challenge every 2 weeks", "In progress").
+#         Leave blank or omit for no badge.
+# ---------------------------------------------------------------------------
+- title: The Secure Code Review Challenge
+  description: >-
+    A complete, working, deliberately vulnerable application every couple of
+    weeks. Review it the way you would on the job, then compare against the
+    published solution.
+  url: https://github.com/mohamed-osama-aboelkheir/the-secure-code-review-challenge
+  status: New challenge every 2 weeks
+  links:
+    - label: Challenges
+      url: https://github.com/mohamed-osama-aboelkheir/the-secure-code-review-challenge/tree/main/challenges
+    - label: Solutions
+      url: https://github.com/mohamed-osama-aboelkheir/the-secure-code-review-challenge/tree/main/solutions
+    - label: Video walkthroughs
+      url: https://www.youtube.com/playlist?list=PLDrEVWZfxVmg
+
+- title: Lessons Learned
+  description: >-
+    What real incidents, reviews, and near-misses actually teach — written up
+    so the lesson survives without the war story.
+  url: "" # TODO
+  status: ""
+
+- title: Threat Modelling Handbook
+  description: >-
+    A practical, opinionated guide to threat modelling web applications —
+    beyond reciting STRIDE at a whiteboard.
+  url: "" # TODO
+  status: In progress

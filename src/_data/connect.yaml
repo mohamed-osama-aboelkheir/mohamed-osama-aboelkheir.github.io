@@ -1,0 +1,17 @@
+# ---------------------------------------------------------------------------
+# "Connect" — compact row of profile links at the bottom.
+# ---------------------------------------------------------------------------
+- name: LinkedIn
+  url: "" # TODO: https://www.linkedin.com/in/<you>
+  accent: "#0a66c2"
+  mark: in
+
+- name: GitHub
+  url: https://github.com/mohamed-osama-aboelkheir
+  accent: "#7d8590"
+  mark: GH
+
+- name: X
+  url: "" # TODO: https://x.com/<handle>
+  accent: "#6b7d92"
+  mark: "✕"
