@@ -5,6 +5,9 @@ name: Mohamed AboElKheir
 headline: Application Security Engineer
 brand: AppSec Untangled
 
+# Stylesheet layered over style.css — a file in src/css/themes/.
+theme: ink
+
 meta_title: Mohamed AboElKheir — AppSec Untangled
 meta_description: >-
   Talks, slides, recordings, and free hands-on application security material by
