@@ -13,7 +13,7 @@
 {% endmacro %}
 
 {# Brand icons from src/img/logos/. Monochrome marks ship a -dark variant. #}
-{% set THEMED_ICONS = ["medium", "github", "skill"] %}
+{% set THEMED_ICONS = ["medium", "github", "skill", "claude"] %}
 {% macro icon(name, cls) %}
   {%- if name in THEMED_ICONS -%}
     <picture class="icon {{ cls }}">
@@ -40,6 +40,24 @@
       {%- endif -%}
     </span>
   {%- endif -%}
+{% endmacro %}
+
+{# A card whose title links out, with optional deeper links beneath it. #}
+{% macro linkCard(item) %}
+  <div class="card linked{% if not item.url %} soon{% endif %}">
+    {% if item.logo or item.icon %}{{ mark(item) }}{% endif %}
+    <div class="card-body">
+      <h3>
+        {% if item.url %}<a class="stretch" href="{{ item.url }}">{{ item.title }}</a>
+        {% else %}{{ item.title }} <span class="badge">soon</span>{% endif %}
+      </h3>
+      <p>{{ item.description }}</p>
+      {% if item.status %}<p class="status">{{ item.status }}</p>{% endif %}
+      {% if item.links.length %}
+      <p class="links">{% for l in item.links %}<a href="{{ l.url }}">{% if l.icon %}{{ icon(l.icon) }}{% endif %}{{ l.label }}</a>{% endfor %}</p>
+      {% endif %}
+    </div>
+  </div>
 {% endmacro %}
 
 <main>
@@ -125,6 +143,15 @@
   </section>
   {% endif %}
 
+  {% if resources.length %}
+  <section>
+    <h2>Wiki &amp; Skills</h2>
+    <div class="grid">
+      {% for r in resources %}{{ linkCard(r) }}{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   {% if talks.length %}
   <section>
     <h2>Talks</h2>
@@ -163,8 +190,8 @@
               {% elif "slides" in pending %}<span class="action-soon">{{ icon("google-drive") }}Slides <em>soon</em></span>{% endif %}
               {% if video %}<a href="{{ video }}">{{ icon("youtube") }}Video</a>
               {% elif "video" in pending %}<span class="action-soon">{{ icon("youtube") }}Video <em>soon</em></span>{% endif %}
-              {% if skill %}<a href="{{ skill }}">{{ icon("skill") }}Skill</a>
-              {% elif "skill" in pending %}<span class="action-soon">{{ icon("skill") }}Skill <em>soon</em></span>{% endif %}
+              {% if skill %}<a href="{{ skill }}">{{ icon("claude") }}Skill</a>
+              {% elif "skill" in pending %}<span class="action-soon">{{ icon("claude") }}Skill <em>soon</em></span>{% endif %}
               {% if not slides and not video and not skill and not pending.length and not (a | isUpcoming) %}<span class="badge">Links soon</span>{% endif %}
             </span>
           </li>
@@ -180,22 +207,7 @@
   <section>
     <h2>Series</h2>
     <div class="grid">
-      {% for s in series %}
-      <div class="card series{% if not s.url %} soon{% endif %}">
-        {% if s.logo %}{{ logo(s, "mark mark-img") }}{% endif %}
-        <div class="card-body">
-          <h3>
-            {% if s.url %}<a class="stretch" href="{{ s.url }}">{{ s.title }}</a>
-            {% else %}{{ s.title }} <span class="badge">soon</span>{% endif %}
-          </h3>
-          <p>{{ s.description }}</p>
-          {% if s.status %}<p class="status">{{ s.status }}</p>{% endif %}
-          {% if s.links.length %}
-          <p class="links">{% for l in s.links %}<a href="{{ l.url }}">{% if l.icon %}{{ icon(l.icon) }}{% endif %}{{ l.label }}</a>{% endfor %}</p>
-          {% endif %}
-        </div>
-      </div>
-      {% endfor %}
+      {% for s in series %}{{ linkCard(s) }}{% endfor %}
     </div>
   </section>
   {% endif %}

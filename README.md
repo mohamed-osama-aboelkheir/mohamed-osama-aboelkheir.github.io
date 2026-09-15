@@ -25,6 +25,7 @@ npm run build    # one-off build into _site/
 | --- | --- |
 | `src/_data/site.yaml` | Name, headline, tagline, avatar, CV link, page metadata |
 | `src/_data/channels.yaml` | The "Watch & Read" cards (YouTube, Medium, dev.to, …) |
+| `src/_data/resources.yaml` | The "Wiki & Skills" cards (the AppSec wiki, the Claude Code marketplace) |
 | `src/_data/series.yaml` | The "Series" cards (Secure Code Review Challenge, …) |
 | `src/_data/talks.yaml` | Talks, with every conference nested under `appearances` |
 | `src/_data/connect.yaml` | The profile pills at the bottom (LinkedIn, GitHub, X) |

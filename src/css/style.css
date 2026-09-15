@@ -146,7 +146,7 @@ h2 {
   color: inherit;
   transition: border-color 0.15s, background 0.15s, transform 0.15s;
 }
-a.card:hover, .series:hover {
+a.card:hover, .card.linked:hover {
   border-color: var(--line-strong);
   background: var(--bg-raised-hover);
   transform: translateY(-2px);

@@ -45,7 +45,8 @@
       location: Washington, DC, US
       date: "2026-09"
       slides_url: https://docs.google.com/presentation/d/1T3O84RrNyIeXlXNGExH3bSV0mUMJzrd6/edit?usp=sharing
-      pending: [video, skill]
+      skill_url: https://github.com/mohamed-osama-aboelkheir/appsec-untangled-resources
+      pending: [video]
 
 - title: Are AI Agents the Ultimate Confused Deputy?
   abstract: >-

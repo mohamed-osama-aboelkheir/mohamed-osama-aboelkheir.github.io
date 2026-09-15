@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------------------
+# "Wiki & Skills" cards. Order here = order on the page.
+#   url     the primary destination (whole card is clickable)
+#   logo    optional image in src/img/ (`round: true` for a circular crop)
+#   icon    optional tile icon from src/img/logos/, used when there is no logo
+#   links   deeper links; each may carry an `icon` (src/img/logos/, no .svg)
+# ---------------------------------------------------------------------------
+
+- title: AppSec Untangled Wiki
+  logo: appsec-untangled-logo.jpg
+  round: true
+  description: >-
+    The threat-model-first code review methodology, and the threats it checks —
+    each with criteria, attack, mitigation, per-stack code and the bypasses
+    worth checking.
+  url: https://mohamed-osama-aboelkheir.github.io/appsec-untangled-resources/
+  links:
+    - label: The methodology
+      url: https://mohamed-osama-aboelkheir.github.io/appsec-untangled-resources/methodology/
+    - label: The threats
+      url: https://mohamed-osama-aboelkheir.github.io/appsec-untangled-resources/threats/
+    - label: Example report
+      url: https://mohamed-osama-aboelkheir.github.io/appsec-untangled-resources/example-report.html
+
+- title: Claude Code Skills
+  icon: claude
+  description: >-
+    A Claude Code plugin marketplace. The secure-code-review skill runs the
+    wiki's methodology over a pull request, commit or diff and writes a report
+    with evidence.
+  url: https://github.com/mohamed-osama-aboelkheir/appsec-untangled-resources
+  links:
+    - label: Marketplace on GitHub
+      icon: github
+      url: https://github.com/mohamed-osama-aboelkheir/appsec-untangled-resources
+    - label: Using the skill
+      url: https://mohamed-osama-aboelkheir.github.io/appsec-untangled-resources/using-the-skill/
