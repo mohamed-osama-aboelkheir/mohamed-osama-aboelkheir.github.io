@@ -68,8 +68,7 @@
       subtitle: How AI Agents' Capabilities Are Being Abused
       event_url: https://www.theelephantinappsec.com/schedule
       date: "2026-01"
-      # TODO: this slides URL looks truncated — re-copy the share link
-      slides_url: https://docs.google.com/presentation/d/1EZej7U50ALlFRfjc4mhCDye4A4f2dS80tugJFD59usp=sharing
+      slides_url: https://docs.google.com/presentation/d/1EZej7U50ALlFRfjc4mhCDye4A4f2dS80tugJFD59Dno/edit?usp=sharing
 
     - event: AgentCon DC
       subtitle: "Exploring AI Agent Authorization Issues"
