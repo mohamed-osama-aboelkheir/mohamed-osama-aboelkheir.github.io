@@ -1,12 +1,6 @@
 # ---------------------------------------------------------------------------
-# Profile pills.
+# Profile pills at the bottom.
 # ---------------------------------------------------------------------------
-- name: GitHub
-  url: https://github.com/mohamed-osama-aboelkheir
-  accent: "#7d8590"
-  mark: GH
-
 - name: LinkedIn
   url: https://www.linkedin.com/in/mohamed-aboelkheir-4802ba9b/
-  accent: "#0a66c2"
-  mark: in
+  icon: linkedin

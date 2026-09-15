@@ -3,7 +3,8 @@
 #   url     the primary destination (whole card is clickable)
 #   logo    optional image in src/img/
 #   status  optional badge text
-#   links   the individual places the series lives
+#   links   the individual places the series lives; each may carry an `icon`
+#           (a filename in src/img/logos/, without .svg)
 # ---------------------------------------------------------------------------
 
 - title: Threat Modeling Handbook
@@ -13,6 +14,7 @@
   url: https://medium.com/@mohamed.osama.aboelkheir/list/threat-modeling-handbook-309a70ec273f
   links:
     - label: Read on Medium
+      icon: medium
       url: https://medium.com/@mohamed.osama.aboelkheir/list/threat-modeling-handbook-309a70ec273f
 
 - title: Lessons Learned
@@ -22,8 +24,10 @@
   url: https://medium.com/@mohamed.osama.aboelkheir/list/lessons-learned-d64346d08a74
   links:
     - label: Read on Medium
+      icon: medium
       url: https://medium.com/@mohamed.osama.aboelkheir/list/lessons-learned-d64346d08a74
     - label: Watch on YouTube
+      icon: youtube
       url: https://www.youtube.com/playlist?list=PLP2wvS6pRN5CsDRoIhyTK43EfFSGVi-na
 
 - title: The Secure Code Review Challenge
@@ -36,8 +40,11 @@
   status: New challenge every 2 weeks
   links:
     - label: Challenges on GitHub
+      icon: github
       url: https://github.com/mohamed-osama-aboelkheir/the-secure-code-review-challenge
     - label: Read on Medium
+      icon: medium
       url: https://medium.com/@mohamed.osama.aboelkheir/list/the-secure-code-review-challenge-74d95758edb3
     - label: Watch on YouTube
+      icon: youtube
       url: https://www.youtube.com/playlist?list=PLDrEVWZfxVmg

@@ -17,8 +17,12 @@
 #   event_url       optional link to the conference / schedule
 #   location        optional
 #   date            "YYYY-MM-DD" or "YYYY-MM". Omit entirely for "Date TBA".
-#   status          "upcoming" to force the Upcoming badge and hide links
-#   slides_url / recording_url   optional per-venue overrides
+#   status          "upcoming" to force the Upcoming badge
+#   slides_url / recording_url / skill_url   links, with talk-level fallback
+#   pending         resources promised but not published yet — any of
+#                   [slides, video, skill]. Renders a muted "soon" chip with
+#                   the right icon instead of a link. Delete a name from the
+#                   list once you set the matching URL.
 # ---------------------------------------------------------------------------
 
 - title: "AI-Powered Security Code Reviews That Actually Work: A Threat-Model-First Methodology"
@@ -38,8 +42,6 @@
     From there, we build a threat model, translate it into a reusable security
     wiki, and use it to drive a focused, automated review of code changes — so
     AI isn't guessing, it's following your plan.
-  slides_url: "" # TODO: add once the deck is public
-  recording_url: "" # TODO
   tags:
     - Secure Code Review
     - AI
@@ -47,8 +49,8 @@
     - event: DC State of the Stack
       event_url: https://dcstateofthestack.org/
       location: Washington, DC, US
-      # date intentionally omitted — renders as "Date TBA". Add it when known.
-      status: upcoming
+      date: "2026-09"
+      pending: [slides, video, skill]
 
 - title: Are AI Agents the Ultimate Confused Deputy?
   abstract: >-
@@ -59,6 +61,7 @@
     - Authorization
   links:
     - label: Related blog post
+      icon: medium
       url: https://medium.com/p/64444e002316
   appearances:
     - event: The Elephant in AppSec

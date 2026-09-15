@@ -27,12 +27,27 @@
   {%- endif -%}
 {% endmacro %}
 
+{# Brand icons from src/img/logos/. Monochrome marks ship a -dark variant. #}
+{% set THEMED_ICONS = ["medium", "github", "skill"] %}
+{% macro icon(name, cls) %}
+  {%- if name in THEMED_ICONS -%}
+    <picture class="icon {{ cls }}">
+      <source srcset="/img/logos/{{ name }}-dark.svg" media="(prefers-color-scheme: dark)">
+      <img src="/img/logos/{{ name }}.svg" alt="" loading="lazy">
+    </picture>
+  {%- else -%}
+    <img class="icon {{ cls }}" src="/img/logos/{{ name }}.svg" alt="" loading="lazy">
+  {%- endif -%}
+{% endmacro %}
+
 {# The logo tile for a card, falling back to a letterform mark. #}
 {% macro mark(item) %}
   {%- if item.logo -%}
     {{ logo(item, "mark mark-img") }}
+  {%- elif item.icon -%}
+    <span class="mark mark-img">{{ icon(item.icon) }}</span>
   {%- else -%}
-    <span class="mark" style="--accent: {{ item.accent or '#8b93a7' }}">
+    <span class="mark{% if item.mark_style %} mark-{{ item.mark_style }}{% endif %}" style="--accent: {{ item.accent or '#8b93a7' }}">
       {%- if item.mark == "play" -%}
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7.5v9l7.5-4.5z" fill="currentColor"/></svg>
       {%- else -%}
@@ -67,7 +82,7 @@
           <p class="bio-line">{{ row.lead }} <strong>{{ row.org }}</strong></p>
           {% if row.note %}<p class="bio-note">{{ row.note }}</p>{% endif %}
           {% if row.links.length %}
-          <p class="links">{% for l in row.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+          <p class="links">{% for l in row.links %}<a href="{{ l.url }}">{% if l.icon %}{{ icon(l.icon) }}{% endif %}{{ l.label }}</a>{% endfor %}</p>
           {% endif %}
         </div>
       </li>
@@ -76,11 +91,28 @@
   </section>
   {% endif %}
 
-  {% if channels.length %}
   <section>
-    <h2>Watch &amp; Read</h2>
+    <h2>Watch, Read &amp; Code</h2>
+
+    {% if channels.featured %}
+    {% set f = channels.featured %}
+    <div class="card featured">
+      {{ logo(f, "mark mark-img featured-logo") }}
+      <div class="card-body">
+        <h3>{{ f.name }}</h3>
+        <p>{{ f.description }}</p>
+        <div class="platforms">
+          {% for l in f.links %}
+          <a class="platform" href="{{ l.url }}">{{ icon(l.icon) }}<span>{{ l.name }}</span></a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if channels.more.length %}
     <div class="grid">
-      {% for c in channels %}
+      {% for c in channels.more %}
       <a class="card channel{% if not c.url %} soon{% endif %}"
          {% if c.url %}href="{{ c.url }}"{% else %}aria-disabled="true"{% endif %}>
         {{ mark(c) }}
@@ -91,8 +123,8 @@
       </a>
       {% endfor %}
     </div>
+    {% endif %}
   </section>
-  {% endif %}
 
   {% if connect.length %}
   <section>
@@ -125,7 +157,7 @@
         <p class="tags">{% for t in talk.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>
         {% endif %}
         {% if talk.links.length %}
-        <p class="links">{% for l in talk.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+        <p class="links">{% for l in talk.links %}<a href="{{ l.url }}">{% if l.icon %}{{ icon(l.icon) }}{% endif %}{{ l.label }}</a>{% endfor %}</p>
         {% endif %}
         <ul class="appearances">
           {% for a in talk.appearances %}
@@ -140,9 +172,15 @@
               {% if a | isUpcoming %}<span class="badge upcoming">Upcoming</span>{% endif %}
               {% set slides = a.slides_url or talk.slides_url %}
               {% set video = a.recording_url or talk.recording_url %}
-              {% if slides %}<a href="{{ slides }}">Slides</a>{% endif %}
-              {% if video %}<a href="{{ video }}">Video</a>{% endif %}
-              {% if not slides and not video and not (a | isUpcoming) %}<span class="badge">Links soon</span>{% endif %}
+              {% set skill = a.skill_url or talk.skill_url %}
+              {% set pending = a.pending or [] %}
+              {% if slides %}<a href="{{ slides }}">{{ icon("google-drive") }}Slides</a>
+              {% elif "slides" in pending %}<span class="action-soon">{{ icon("google-drive") }}Slides <em>soon</em></span>{% endif %}
+              {% if video %}<a href="{{ video }}">{{ icon("youtube") }}Video</a>
+              {% elif "video" in pending %}<span class="action-soon">{{ icon("youtube") }}Video <em>soon</em></span>{% endif %}
+              {% if skill %}<a href="{{ skill }}">{{ icon("skill") }}Skill</a>
+              {% elif "skill" in pending %}<span class="action-soon">{{ icon("skill") }}Skill <em>soon</em></span>{% endif %}
+              {% if not slides and not video and not skill and not pending.length and not (a | isUpcoming) %}<span class="badge">Links soon</span>{% endif %}
             </span>
           </li>
           {% endfor %}
@@ -168,7 +206,7 @@
           <p>{{ s.description }}</p>
           {% if s.status %}<p class="status">{{ s.status }}</p>{% endif %}
           {% if s.links.length %}
-          <p class="links">{% for l in s.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+          <p class="links">{% for l in s.links %}<a href="{{ l.url }}">{% if l.icon %}{{ icon(l.icon) }}{% endif %}{{ l.label }}</a>{% endfor %}</p>
           {% endif %}
         </div>
       </div>

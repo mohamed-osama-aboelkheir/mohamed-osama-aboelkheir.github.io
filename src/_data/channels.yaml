@@ -1,25 +1,38 @@
 # ---------------------------------------------------------------------------
-# "Watch & Read" cards.
-#   logo    file in src/img/ (preferred)
-#   mark    fallback when there is no logo: "play", or the text drawn in the tile
-#   accent  tile colour, also used for the fallback mark
+# "Watch, Read & Code".
+#
+# `featured` is the brand block: one logo with its platforms listed underneath.
+# `more` is the row of single-destination cards below it.
+#
+#   icon   a file in src/img/logos/ (without .svg) — youtube, medium, github,
+#          linkedin, google-drive, devto, skill. Monochrome ones automatically
+#          swap to a light version in dark mode.
+#   mark   fallback tile text when there is no icon
 # ---------------------------------------------------------------------------
-- name: YouTube
-  description: AppSec Untangled — walkthroughs, series, and talk recordings
-  url: https://www.youtube.com/@AppSecUntangled
+
+featured:
+  name: AppSec Untangled
   logo: appsec-untangled-logo.jpg
   round: true
-  accent: "#ff0033"
+  description: >-
+    Where I write and talk about application security — walkthroughs, series,
+    and the thinking behind them.
+  links:
+    - name: YouTube
+      icon: youtube
+      url: https://www.youtube.com/@AppSecUntangled
+    - name: Medium
+      icon: medium
+      url: https://medium.com/@mohamed.osama.aboelkheir
 
-- name: Medium
-  description: AppSec Untangled — long-form posts on application security
-  url: https://medium.com/@mohamed.osama.aboelkheir
-  logo: appsec-untangled-logo.jpg
-  round: true
-  accent: "#1a8917"
+more:
+  - name: dev.to
+    description: Cross-posted articles and shorter write-ups
+    url: https://dev.to/mohamed_aboelkheir
+    mark: DEV
+    mark_style: devto
 
-- name: dev.to
-  description: Cross-posted articles and shorter write-ups
-  url: https://dev.to/mohamed_aboelkheir
-  accent: "#3b49df"
-  mark: DEV
+  - name: GitHub
+    description: Challenge apps, solutions, and the rest of the code
+    url: https://github.com/mohamed-osama-aboelkheir
+    icon: github

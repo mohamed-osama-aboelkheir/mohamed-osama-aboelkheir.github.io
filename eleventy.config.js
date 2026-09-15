@@ -27,7 +27,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("monthYear", (value) =>
     value
-      ? toDate(value).toLocaleDateString("en-GB", {
+      ? toDate(value).toLocaleDateString("en-US", {
           month: "short",
           year: "numeric",
           timeZone: "UTC",
