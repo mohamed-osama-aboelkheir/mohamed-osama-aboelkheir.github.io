@@ -13,7 +13,7 @@
 {% endmacro %}
 
 {# Brand icons from src/img/logos/. Monochrome marks ship a -dark variant. #}
-{% set THEMED_ICONS = ["medium", "github", "skill", "claude"] %}
+{% set THEMED_ICONS = ["medium", "github", "skill"] %}
 {% macro icon(name, cls) %}
   {%- if name in THEMED_ICONS -%}
     <picture class="icon {{ cls }}">
