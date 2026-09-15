@@ -45,6 +45,10 @@
   tags:
     - Secure Code Review
     - AI
+  links:
+    - label: Related video
+      icon: youtube
+      url: https://youtu.be/OC2cTxCGQIM
   appearances:
     - event: DC State of the Stack
       event_url: https://dcstateofthestack.org/
