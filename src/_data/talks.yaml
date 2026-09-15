@@ -72,8 +72,7 @@
 
     - event: AgentCon DC
       subtitle: "Exploring AI Agent Authorization Issues"
-      # TODO: this event URL looks truncated — re-copy it
-      event_url: https://www.communitydays.org/event/2025-10-01/agentcon-washington-dc2025#sessions?id=1030265
+      event_url: https://www.communitydays.org/event/2025-10-01/agentcon-washington-dc-2025#sessions?id=1030265
       location: Washington, DC, US
       date: "2025-10"
       slides_url: https://docs.google.com/presentation/d/1JsceEqgpABPszhrn9cuXxZIet0G7AmrtrhHL35MNlFs/edit?usp=sharing
@@ -88,11 +87,11 @@
   appearances:
     - event: DevSecCon
       date: "2024-07"
-      slides_url: https://docs.google.com/presentation/d/1vW2Rqwu_F2XyvOrBomiw9LghybKEt_cxwaGgm-4S3k/
+      slides_url: https://docs.google.com/presentation/d/1vW2Rqwu_F2XyvOrBom-iw9LghybKEt_cxwaGgm-4S3k/edit?usp=sharing
       recording_url: https://www.youtube.com/watch?v=XvraqRRjHjQ
 
     - event: ThreatModCon
       location: Lisbon, PT
       date: "2024-06"
-      slides_url: https://drive.google.com/drive/folders/15fHbsXsoY7Mojs2ATmQqXMwltinfkZ4
+      slides_url: https://docs.google.com/presentation/d/16X3cuOmHrvEuGuAq1hFzXsR366e24XDCexHYm59Lxpg/edit?usp=sharing
       recording_url: https://www.youtube.com/watch?v=3qeWXuD6E50
