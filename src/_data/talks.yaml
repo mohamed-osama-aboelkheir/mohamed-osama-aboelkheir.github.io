@@ -54,7 +54,8 @@
       event_url: https://dcstateofthestack.org/
       location: Washington, DC, US
       date: "2026-09"
-      pending: [slides, video, skill]
+      slides_url: https://docs.google.com/presentation/d/1T3O84RrNyIeXlXNGExH3bSV0mUMJzrd6/edit?usp=sharing
+      pending: [video, skill]
 
 - title: Are AI Agents the Ultimate Confused Deputy?
   abstract: >-
