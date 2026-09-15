@@ -1,0 +1,14 @@
+# Preview-only: each entry builds /preview/<slug>/ using src/css/themes/<slug>.css.
+# Once you pick one, set `theme:` in site.yaml and this list can be deleted.
+- slug: ink
+  name: Ink
+  note: The current palette, with section headings promoted to real headings.
+- slug: terminal
+  name: Terminal
+  note: Near-black, monospace headings, green accent — matches the $ whoami slide.
+- slug: editorial
+  name: Editorial
+  note: Paper-first and light, serif headings, generous spacing.
+- slug: vivid
+  name: Vivid
+  note: High contrast with a gradient accent and large headings.

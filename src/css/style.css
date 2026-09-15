@@ -14,6 +14,8 @@
   --text-faint: #6d748a;
   --accent: #5b8cff;
   --avatar-bg: linear-gradient(145deg, #2a3550, #161a26);
+  --glow: rgba(91, 140, 255, 0.16);
+  --heading-font: inherit;
   --radius: 14px;
   --maxw: 860px;
 }
@@ -49,7 +51,7 @@ body::before {
   position: fixed;
   inset: 0 0 auto 0;
   height: 420px;
-  background: radial-gradient(60% 100% at 50% 0%, rgba(91, 140, 255, 0.16), transparent 70%);
+  background: radial-gradient(60% 100% at 50% 0%, var(--glow), transparent 70%);
   pointer-events: none;
 }
 

@@ -1,0 +1,52 @@
+/* Terminal — near-black, monospace headings, green accent.
+   Picks up the `$ whoami` idiom from the slide deck. */
+
+:root {
+  --bg: #08090b;
+  --bg-raised: #0e1014;
+  --bg-raised-hover: #13161c;
+  --line: #1e222a;
+  --line-strong: #2d333f;
+  --text: #dfe4e2;
+  --text-dim: #99a3a0;
+  --text-faint: #69736f;
+  --accent: #00d68f;
+  --avatar-bg: linear-gradient(145deg, #12241d, #0b0d10);
+  --glow: rgba(0, 214, 143, 0.10);
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --radius: 8px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f4f6f4;
+    --bg-raised: #ffffff;
+    --bg-raised-hover: #ffffff;
+    --line: #dfe4e0;
+    --line-strong: #c3ccc6;
+    --text: #10241c;
+    --text-dim: #4a5a53;
+    --text-faint: #7b8a83;
+    --accent: #00885c;
+    --avatar-bg: linear-gradient(145deg, #dff0e8, #ffffff);
+    --glow: rgba(0, 136, 92, 0.10);
+  }
+}
+
+h2 {
+  margin: 0 0 18px;
+  font-family: var(--mono);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  color: var(--accent);
+}
+h2::before { content: "$ "; color: var(--text-faint); }
+
+.headline, .when, .status, .tag, .badge, .action-soon em { font-family: var(--mono); }
+.brand { font-family: var(--mono); }
+.hero h1 { font-family: var(--mono); letter-spacing: -0.03em; }
+
+.tag, .badge, .status { text-transform: lowercase; }
+.card, .talk, .pill, .platform { border-radius: var(--radius); }

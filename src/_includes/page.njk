@@ -1,0 +1,207 @@
+{# A logo image, with an optional dark-mode alternative. #}
+{% macro logo(item, cls) %}
+  {%- if item.logo_dark -%}
+    <picture class="{{ cls }}{% if item.round %} round{% endif %}">
+      <source srcset="/img/{{ item.logo_dark }}" media="(prefers-color-scheme: dark)">
+      <img src="/img/{{ item.logo }}" alt="{{ item.logo_alt or item.org or item.name or '' }}" loading="lazy">
+    </picture>
+  {%- else -%}
+    <span class="{{ cls }}{% if item.round %} round{% endif %}">
+      <img src="/img/{{ item.logo }}" alt="{{ item.logo_alt or item.org or item.name or '' }}" loading="lazy">
+    </span>
+  {%- endif -%}
+{% endmacro %}
+
+{# Brand icons from src/img/logos/. Monochrome marks ship a -dark variant. #}
+{% set THEMED_ICONS = ["medium", "github", "skill"] %}
+{% macro icon(name, cls) %}
+  {%- if name in THEMED_ICONS -%}
+    <picture class="icon {{ cls }}">
+      <source srcset="/img/logos/{{ name }}-dark.svg" media="(prefers-color-scheme: dark)">
+      <img src="/img/logos/{{ name }}.svg" alt="" loading="lazy">
+    </picture>
+  {%- else -%}
+    <img class="icon {{ cls }}" src="/img/logos/{{ name }}.svg" alt="" loading="lazy">
+  {%- endif -%}
+{% endmacro %}
+
+{# The logo tile for a card, falling back to a letterform mark. #}
+{% macro mark(item) %}
+  {%- if item.logo -%}
+    {{ logo(item, "mark mark-img") }}
+  {%- elif item.icon -%}
+    <span class="mark mark-img">{{ icon(item.icon) }}</span>
+  {%- else -%}
+    <span class="mark{% if item.mark_style %} mark-{{ item.mark_style }}{% endif %}" style="--accent: {{ item.accent or '#8b93a7' }}">
+      {%- if item.mark == "play" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7.5v9l7.5-4.5z" fill="currentColor"/></svg>
+      {%- else -%}
+        {{ item.mark }}
+      {%- endif -%}
+    </span>
+  {%- endif -%}
+{% endmacro %}
+
+<main>
+
+  <header class="hero">
+    <div class="avatar">
+      {% if site.avatar %}<img src="/img/{{ site.avatar }}" alt="{{ site.name }}">
+      {% else %}<span aria-hidden="true">{{ site.name | first }}A</span>{% endif %}
+    </div>
+    <h1>{{ site.name }}</h1>
+    <p class="headline">{{ site.headline }}{% if site.brand %} <span class="dot">·</span> <span class="brand">{{ site.brand }}</span>{% endif %}</p>
+    {% if site.tagline %}<p class="tagline">{{ site.tagline }}</p>{% endif %}
+    {% if site.resume.url %}
+    <p><a class="cta" href="{{ site.resume.url }}">{{ site.resume.label }}</a></p>
+    {% endif %}
+  </header>
+
+  {% if bio.length %}
+  <section class="bio-section">
+    <ul class="bio">
+      {% for row in bio %}
+      <li>
+        {{ logo(row, "bio-logo") }}
+        <div>
+          <p class="bio-line">{{ row.lead }} <strong>{{ row.org }}</strong></p>
+          {% if row.note %}<p class="bio-note">{{ row.note }}</p>{% endif %}
+          {% if row.links.length %}
+          <p class="links">{% for l in row.links %}<a href="{{ l.url }}">{% if l.icon %}{{ icon(l.icon) }}{% endif %}{{ l.label }}</a>{% endfor %}</p>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <section>
+    <h2>Watch, Read &amp; Code</h2>
+
+    {% if channels.featured %}
+    {% set f = channels.featured %}
+    <div class="card featured">
+      {{ logo(f, "mark mark-img featured-logo") }}
+      <div class="card-body">
+        <h3>{{ f.name }}</h3>
+        <p>{{ f.description }}</p>
+        <div class="platforms">
+          {% for l in f.links %}
+          <a class="platform" href="{{ l.url }}">{{ icon(l.icon) }}<span>{{ l.name }}</span></a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if channels.more.length %}
+    <div class="grid">
+      {% for c in channels.more %}
+      <a class="card channel{% if not c.url %} soon{% endif %}"
+         {% if c.url %}href="{{ c.url }}"{% else %}aria-disabled="true"{% endif %}>
+        {{ mark(c) }}
+        <div class="card-body">
+          <h3>{{ c.name }}{% if not c.url %} <span class="badge">soon</span>{% endif %}</h3>
+          <p>{{ c.description }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </section>
+
+  {% if connect.length %}
+  <section>
+    <h2>Connect</h2>
+    <div class="connect">
+      {% for c in connect %}
+      <a class="pill{% if not c.url %} soon{% endif %}"
+         {% if c.url %}href="{{ c.url }}"{% else %}aria-disabled="true"{% endif %}>
+        {{ mark(c) }}<span>{{ c.name }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if talks.length %}
+  <section>
+    <h2>Talks</h2>
+    <div class="talks">
+      {% for talk in talks | sortTalks %}
+      <article class="talk">
+        <div class="talk-head">
+          {% if talk.logo %}{{ logo(talk, "talk-logo") }}{% endif %}
+          <h3>{{ talk.title }}</h3>
+        </div>
+        {% if talk.abstract %}
+        <div class="abstract">{% for para in talk.abstract.split("\n\n") %}<p>{{ para }}</p>{% endfor %}</div>
+        {% endif %}
+        {% if talk.tags.length %}
+        <p class="tags">{% for t in talk.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>
+        {% endif %}
+        {% if talk.links.length %}
+        <p class="links">{% for l in talk.links %}<a href="{{ l.url }}">{% if l.icon %}{{ icon(l.icon) }}{% endif %}{{ l.label }}</a>{% endfor %}</p>
+        {% endif %}
+        <ul class="appearances">
+          {% for a in talk.appearances %}
+          <li>
+            <span class="venue">
+              <strong>{% if a.event_url %}<a href="{{ a.event_url }}">{{ a.event }}</a>{% else %}{{ a.event }}{% endif %}</strong>
+              {% if a.location %}<span class="loc">{{ a.location }}</span>{% endif %}
+              <span class="when">{{ a.date | monthYear }}</span>
+              {% if a.subtitle %}<span class="subtitle">“{{ a.subtitle }}”</span>{% endif %}
+            </span>
+            <span class="actions">
+              {% if a | isUpcoming %}<span class="badge upcoming">Upcoming</span>{% endif %}
+              {% set slides = a.slides_url or talk.slides_url %}
+              {% set video = a.recording_url or talk.recording_url %}
+              {% set skill = a.skill_url or talk.skill_url %}
+              {% set pending = a.pending or [] %}
+              {% if slides %}<a href="{{ slides }}">{{ icon("google-drive") }}Slides</a>
+              {% elif "slides" in pending %}<span class="action-soon">{{ icon("google-drive") }}Slides <em>soon</em></span>{% endif %}
+              {% if video %}<a href="{{ video }}">{{ icon("youtube") }}Video</a>
+              {% elif "video" in pending %}<span class="action-soon">{{ icon("youtube") }}Video <em>soon</em></span>{% endif %}
+              {% if skill %}<a href="{{ skill }}">{{ icon("skill") }}Skill</a>
+              {% elif "skill" in pending %}<span class="action-soon">{{ icon("skill") }}Skill <em>soon</em></span>{% endif %}
+              {% if not slides and not video and not skill and not pending.length and not (a | isUpcoming) %}<span class="badge">Links soon</span>{% endif %}
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if series.length %}
+  <section>
+    <h2>Series</h2>
+    <div class="grid">
+      {% for s in series %}
+      <div class="card series{% if not s.url %} soon{% endif %}">
+        {% if s.logo %}{{ logo(s, "mark mark-img") }}{% endif %}
+        <div class="card-body">
+          <h3>
+            {% if s.url %}<a class="stretch" href="{{ s.url }}">{{ s.title }}</a>
+            {% else %}{{ s.title }} <span class="badge">soon</span>{% endif %}
+          </h3>
+          <p>{{ s.description }}</p>
+          {% if s.status %}<p class="status">{{ s.status }}</p>{% endif %}
+          {% if s.links.length %}
+          <p class="links">{% for l in s.links %}<a href="{{ l.url }}">{% if l.icon %}{{ icon(l.icon) }}{% endif %}{{ l.label }}</a>{% endfor %}</p>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <footer>
+    <p>© {{ year }} {{ site.name }}</p>
+  </footer>
+
+</main>
