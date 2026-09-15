@@ -10,10 +10,13 @@ module.exports = function (eleventyConfig) {
   // YAML gives us Date objects for unquoted dates, strings for quoted ones.
   const toDate = (value) => (value instanceof Date ? value : new Date(value));
 
+  // Undated appearances are things not yet scheduled — they sort to the top.
+  const TBA = new Date(8640000000000000);
+
   // Most recent appearance date — used for sorting and for the "when" label.
   const latestDate = (talk) =>
     (talk.appearances || [])
-      .map((a) => toDate(a.date))
+      .map((a) => (a.date ? toDate(a.date) : TBA))
       .sort((a, b) => b - a)[0];
 
   eleventyConfig.addFilter("latestDate", latestDate);
@@ -23,15 +26,19 @@ module.exports = function (eleventyConfig) {
   );
 
   eleventyConfig.addFilter("monthYear", (value) =>
-    toDate(value).toLocaleDateString("en-GB", {
-      month: "short",
-      year: "numeric",
-      timeZone: "UTC",
-    })
+    value
+      ? toDate(value).toLocaleDateString("en-GB", {
+          month: "short",
+          year: "numeric",
+          timeZone: "UTC",
+        })
+      : "Date TBA"
   );
 
   eleventyConfig.addFilter("isUpcoming", (appearance) =>
-    appearance.status === "upcoming" || toDate(appearance.date) > new Date()
+    appearance.status === "upcoming" ||
+    !appearance.date ||
+    toDate(appearance.date) > new Date()
   );
 
   return {

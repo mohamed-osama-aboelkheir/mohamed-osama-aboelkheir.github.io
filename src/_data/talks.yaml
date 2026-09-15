@@ -1,53 +1,97 @@
 # ---------------------------------------------------------------------------
 # Talks. One entry per TALK, with every conference it was given at nested
-# under `appearances` — so a talk given three times renders once, with three
-# venues beneath it. Talks are sorted automatically by their most recent
-# appearance date; you do not need to keep this file in order.
+# under `appearances`. Sorted automatically: undated/upcoming first, then by
+# most recent appearance — so file order does not matter.
 #
 # Per talk:
-#   title           required
-#   abstract        one or two lines
-#   slides_url      the canonical deck (optional)
-#   recording_url   a canonical recording (optional)
-#   tags            optional list of short labels
+#   title, abstract
+#   logo            optional image in src/img/, shown beside the title
+#   slides_url      canonical deck, used when an appearance has no override
+#   recording_url   canonical recording, same idea
+#   tags            optional short labels
+#   links           optional list of {label, url} (e.g. a related blog post)
 #
 # Per appearance:
-#   event, location, date   required (date as YYYY-MM-DD)
-#   status: upcoming        marks it as not-yet-given; hides slides/video links
-#   slides_url              optional override when that venue's deck differed
-#   recording_url           optional, per-venue recording
-#
-# ⚠️ The entries below are PLACEHOLDERS to show the shape — replace with real
-#    talks, or delete them and the Talks section disappears on its own.
+#   event           required
+#   subtitle        optional — the title used at that venue, when it differed
+#   event_url       optional link to the conference / schedule
+#   location        optional
+#   date            "YYYY-MM-DD" or "YYYY-MM". Omit entirely for "Date TBA".
+#   status          "upcoming" to force the Upcoming badge and hide links
+#   slides_url / recording_url   optional per-venue overrides
 # ---------------------------------------------------------------------------
 
-- title: "Beyond STRIDE: Doors, Windows & Holes"
+- title: "AI-Powered Security Code Reviews That Actually Work: A Threat-Model-First Methodology"
+  logo: dc-state-of-the-stack-logo.png
   abstract: >-
-    A concrete methodology for threat modelling web applications that a team
-    can actually run in an hour, without a whiteboard full of acronyms.
-  slides_url: "" # TODO
-  tags:
-    - Threat Modelling
-  appearances:
-    - event: ThreatModCon
-      location: San Francisco, US
-      date: 2026-10-15
-      status: upcoming
+    AI is a great tool when you know what needs to be done but don't have time
+    to do it. If you don't have a methodology, asking AI to review your code for
+    security issues will be hit or miss at best.
 
-- title: "Reviewing Code Like an Attacker"
-  abstract: >-
-    How to read an unfamiliar codebase the way someone looking for a way in
-    reads it — and why "run the scanner" keeps missing the interesting bugs.
-  slides_url: "" # TODO
+
+    In this talk, I present a structured methodology (with a live demo on a real
+    open-source application) that enables AI to perform more effective and
+    accurate security code reviews. The approach starts by categorizing security
+    issues into two buckets: business logic controls (things that should be
+    present, like authentication and authorization) and source-sink
+    vulnerabilities (things that shouldn't be present, like injection flaws).
+    From there, we build a threat model, translate it into a reusable security
+    wiki, and use it to drive a focused, automated review of code changes — so
+    AI isn't guessing, it's following your plan.
+  slides_url: "" # TODO: add once the deck is public
   recording_url: "" # TODO
   tags:
     - Secure Code Review
+    - AI
   appearances:
-    - event: OWASP Global AppSec
+    - event: DC State of the Stack
+      event_url: https://dcstateofthestack.org/
+      location: Washington, DC, US
+      # date intentionally omitted — renders as "Date TBA". Add it when known.
+      status: upcoming
+
+- title: Are AI Agents the Ultimate Confused Deputy?
+  abstract: >-
+    How AI agents' capabilities are being abused, and the authorization gaps
+    that make an agent a willing deputy for someone else's instructions.
+  tags:
+    - AI Agents
+    - Authorization
+  links:
+    - label: Related blog post
+      url: https://medium.com/p/64444e002316
+  appearances:
+    - event: The Elephant in AppSec
+      subtitle: How AI Agents' Capabilities Are Being Abused
+      event_url: https://www.theelephantinappsec.com/schedule
+      date: "2026-01"
+      # TODO: this slides URL looks truncated — re-copy the share link
+      slides_url: https://docs.google.com/presentation/d/1EZej7U50ALlFRfjc4mhCDye4A4f2dS80tugJFD59usp=sharing
+
+    - event: AgentCon DC
+      subtitle: "Exploring AI Agent Authorization Issues"
+      # TODO: this event URL looks truncated — re-copy it
+      event_url: https://www.communitydays.org/event/2025-10-01/agentcon-washington-dc2025#sessions?id=1030265
+      location: Washington, DC, US
+      date: "2025-10"
+      # TODO: this slides URL looks truncated — re-copy the share link
+      slides_url: https://docs.google.com/presentation/d/1JsceEqgpABPszhrn9cuXxZIet0G7AmrtrhHL35MNlslide=id.g3844ec1bc83_0_573
+
+- title: Using Threat Modeling to Create a Robust DevSecOps Plan
+  abstract: >-
+    Turning a threat model into an actual DevSecOps plan — so the tooling you
+    roll out is driven by the threats you have, not by a vendor checklist.
+  tags:
+    - Threat Modeling
+    - DevSecOps
+  appearances:
+    - event: DevSecCon
+      date: "2024-07"
+      slides_url: https://docs.google.com/presentation/d/1vW2Rqwu_F2XyvOrBomiw9LghybKEt_cxwaGgm-4S3k/
+      recording_url: https://www.youtube.com/watch?v=XvraqRRjHjQ
+
+    - event: ThreatModCon
       location: Lisbon, PT
-      date: 2026-06-25
-      recording_url: "" # TODO
-    - event: BSides Cairo
-      location: Cairo, EG
-      date: 2026-03-14
-      slides_url: "" # TODO — set only if this venue's deck differed
+      date: "2024-06"
+      slides_url: https://drive.google.com/drive/folders/15fHbsXsoY7Mojs2ATmQqXMwltinfkZ4
+      recording_url: https://www.youtube.com/watch?v=3qeWXuD6E50

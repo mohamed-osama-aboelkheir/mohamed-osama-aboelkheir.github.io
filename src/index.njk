@@ -13,30 +13,68 @@
 </head>
 <body>
 
-{% macro mark(item) %}
-<span class="mark" style="--accent: {{ item.accent or '#8b93a7' }}">
-  {%- if item.mark == "play" -%}
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7.5v9l7.5-4.5z" fill="currentColor"/></svg>
+{# A logo image, with an optional dark-mode alternative. #}
+{% macro logo(item, cls) %}
+  {%- if item.logo_dark -%}
+    <picture class="{{ cls }}{% if item.round %} round{% endif %}">
+      <source srcset="/img/{{ item.logo_dark }}" media="(prefers-color-scheme: dark)">
+      <img src="/img/{{ item.logo }}" alt="{{ item.logo_alt or item.org or item.name or '' }}" loading="lazy">
+    </picture>
   {%- else -%}
-    {{ item.mark }}
+    <span class="{{ cls }}{% if item.round %} round{% endif %}">
+      <img src="/img/{{ item.logo }}" alt="{{ item.logo_alt or item.org or item.name or '' }}" loading="lazy">
+    </span>
   {%- endif -%}
-</span>
+{% endmacro %}
+
+{# The logo tile for a card, falling back to a letterform mark. #}
+{% macro mark(item) %}
+  {%- if item.logo -%}
+    {{ logo(item, "mark mark-img") }}
+  {%- else -%}
+    <span class="mark" style="--accent: {{ item.accent or '#8b93a7' }}">
+      {%- if item.mark == "play" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7.5v9l7.5-4.5z" fill="currentColor"/></svg>
+      {%- else -%}
+        {{ item.mark }}
+      {%- endif -%}
+    </span>
+  {%- endif -%}
 {% endmacro %}
 
 <main>
 
   <header class="hero">
-    <div class="avatar" aria-hidden="true">
-      {% if site.avatar %}<img src="/img/{{ site.avatar }}" alt="">
-      {% else %}{{ site.name | first }}A{% endif %}
+    <div class="avatar">
+      {% if site.avatar %}<img src="/img/{{ site.avatar }}" alt="{{ site.name }}">
+      {% else %}<span aria-hidden="true">{{ site.name | first }}A</span>{% endif %}
     </div>
     <h1>{{ site.name }}</h1>
     <p class="headline">{{ site.headline }}{% if site.brand %} <span class="dot">·</span> <span class="brand">{{ site.brand }}</span>{% endif %}</p>
-    <p class="tagline">{{ site.tagline }}</p>
+    {% if site.tagline %}<p class="tagline">{{ site.tagline }}</p>{% endif %}
     {% if site.resume.url %}
     <p><a class="cta" href="{{ site.resume.url }}">{{ site.resume.label }}</a></p>
     {% endif %}
   </header>
+
+  {% if bio.length %}
+  <section class="bio-section">
+    <ul class="bio">
+      {% for row in bio %}
+      <li>
+        {{ logo(row, "bio-logo") }}
+        <div>
+          <p class="bio-line">{{ row.lead }} <strong>{{ row.org }}</strong></p>
+          {% if row.note %}<p class="bio-note">{{ row.note }}</p>{% endif %}
+          {% if row.links.length %}
+          <p class="links">{% for l in row.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
 
   {% if channels.length %}
   <section>
@@ -56,26 +94,15 @@
   </section>
   {% endif %}
 
-  {% if series.length %}
+  {% if connect.length %}
   <section>
-    <h2>Series</h2>
-    <div class="grid">
-      {% for s in series %}
-      <div class="card series{% if not s.url %} soon{% endif %}">
-        <div class="card-body">
-          <h3>
-            {% if s.url %}<a class="stretch" href="{{ s.url }}">{{ s.title }}</a>
-            {% else %}{{ s.title }} <span class="badge">soon</span>{% endif %}
-          </h3>
-          <p>{{ s.description }}</p>
-          {% if s.status %}<p class="status">{{ s.status }}</p>{% endif %}
-          {% if s.links.length and s.url %}
-          <p class="links">
-            {% for l in s.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
-          </p>
-          {% endif %}
-        </div>
-      </div>
+    <h2>Connect</h2>
+    <div class="connect">
+      {% for c in connect %}
+      <a class="pill{% if not c.url %} soon{% endif %}"
+         {% if c.url %}href="{{ c.url }}"{% else %}aria-disabled="true"{% endif %}>
+        {{ mark(c) }}<span>{{ c.name }}</span>
+      </a>
       {% endfor %}
     </div>
   </section>
@@ -87,29 +114,35 @@
     <div class="talks">
       {% for talk in talks | sortTalks %}
       <article class="talk">
-        <h3>{{ talk.title }}</h3>
-        {% if talk.abstract %}<p class="abstract">{{ talk.abstract }}</p>{% endif %}
+        <div class="talk-head">
+          {% if talk.logo %}{{ logo(talk, "talk-logo") }}{% endif %}
+          <h3>{{ talk.title }}</h3>
+        </div>
+        {% if talk.abstract %}
+        <div class="abstract">{% for para in talk.abstract.split("\n\n") %}<p>{{ para }}</p>{% endfor %}</div>
+        {% endif %}
         {% if talk.tags.length %}
         <p class="tags">{% for t in talk.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>
+        {% endif %}
+        {% if talk.links.length %}
+        <p class="links">{% for l in talk.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
         {% endif %}
         <ul class="appearances">
           {% for a in talk.appearances %}
           <li>
             <span class="venue">
-              <strong>{{ a.event }}</strong>
+              <strong>{% if a.event_url %}<a href="{{ a.event_url }}">{{ a.event }}</a>{% else %}{{ a.event }}{% endif %}</strong>
               {% if a.location %}<span class="loc">{{ a.location }}</span>{% endif %}
               <span class="when">{{ a.date | monthYear }}</span>
+              {% if a.subtitle %}<span class="subtitle">“{{ a.subtitle }}”</span>{% endif %}
             </span>
             <span class="actions">
-              {% if a | isUpcoming %}
-                <span class="badge upcoming">Upcoming</span>
-              {% else %}
-                {% set slides = a.slides_url or talk.slides_url %}
-                {% set video = a.recording_url or talk.recording_url %}
-                {% if slides %}<a href="{{ slides }}">Slides</a>{% endif %}
-                {% if video %}<a href="{{ video }}">Video</a>{% endif %}
-                {% if not slides and not video %}<span class="badge muted">Links soon</span>{% endif %}
-              {% endif %}
+              {% if a | isUpcoming %}<span class="badge upcoming">Upcoming</span>{% endif %}
+              {% set slides = a.slides_url or talk.slides_url %}
+              {% set video = a.recording_url or talk.recording_url %}
+              {% if slides %}<a href="{{ slides }}">Slides</a>{% endif %}
+              {% if video %}<a href="{{ video }}">Video</a>{% endif %}
+              {% if not slides and not video and not (a | isUpcoming) %}<span class="badge">Links soon</span>{% endif %}
             </span>
           </li>
           {% endfor %}
@@ -120,15 +153,25 @@
   </section>
   {% endif %}
 
-  {% if connect.length %}
+  {% if series.length %}
   <section>
-    <h2>Connect</h2>
-    <div class="connect">
-      {% for c in connect %}
-      <a class="pill{% if not c.url %} soon{% endif %}"
-         {% if c.url %}href="{{ c.url }}"{% else %}aria-disabled="true"{% endif %}>
-        {{ mark(c) }}<span>{{ c.name }}</span>
-      </a>
+    <h2>Series</h2>
+    <div class="grid">
+      {% for s in series %}
+      <div class="card series{% if not s.url %} soon{% endif %}">
+        {% if s.logo %}{{ logo(s, "mark mark-img") }}{% endif %}
+        <div class="card-body">
+          <h3>
+            {% if s.url %}<a class="stretch" href="{{ s.url }}">{{ s.title }}</a>
+            {% else %}{{ s.title }} <span class="badge">soon</span>{% endif %}
+          </h3>
+          <p>{{ s.description }}</p>
+          {% if s.status %}<p class="status">{{ s.status }}</p>{% endif %}
+          {% if s.links.length %}
+          <p class="links">{% for l in s.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+          {% endif %}
+        </div>
+      </div>
       {% endfor %}
     </div>
   </section>

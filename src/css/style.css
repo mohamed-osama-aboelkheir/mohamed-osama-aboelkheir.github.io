@@ -313,3 +313,74 @@ footer p { margin: 0; color: var(--text-faint); font-size: 13px; }
   main { padding: 40px 16px 56px; }
   .appearances li { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---------- photo avatar ---------- */
+
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar span { line-height: 1; }
+
+/* ---------- bio ---------- */
+
+.bio-section { margin-top: -20px; }
+
+.bio { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.bio li { display: flex; align-items: flex-start; gap: 14px; }
+.bio li > div { min-width: 0; }
+
+.bio-logo {
+  flex: none;
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  margin-top: 1px;
+}
+.bio-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.bio-logo.round {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.bio-logo.round img { width: 100%; height: 100%; object-fit: cover; }
+
+.bio-line { margin: 0; font-size: 15px; }
+.bio-note { margin: 2px 0 0; font-size: 13px; color: var(--text-dim); }
+
+/* ---------- logo tiles on cards ---------- */
+
+.mark-img {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 5px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.mark-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.mark-img.round { border-radius: 50%; padding: 0; }
+.mark-img.round img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- talks: logo + multi-paragraph abstracts + per-venue titles ---------- */
+
+.talk-head { display: flex; align-items: flex-start; gap: 12px; }
+.talk-logo {
+  flex: none;
+  width: 56px;
+  display: grid;
+  place-items: center;
+  margin-top: 2px;
+}
+.talk-logo img { max-width: 100%; height: auto; }
+
+.abstract { margin: 10px 0 0; }
+.abstract p { margin: 0 0 8px; color: var(--text-dim); font-size: 14px; }
+.abstract p:last-child { margin-bottom: 0; }
+
+.venue strong a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+.venue strong a:hover { color: var(--accent); border-color: var(--accent); }
+.subtitle {
+  flex-basis: 100%;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.talk .links { margin-top: 12px !important; }

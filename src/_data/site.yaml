@@ -1,25 +1,19 @@
 # ---------------------------------------------------------------------------
-# Identity / header. Edit freely — everything here renders at the top of the page.
+# Identity / header.
 # ---------------------------------------------------------------------------
 name: Mohamed AboElKheir
 headline: Application Security Engineer
-# One line. This is what someone reads in the ~15 seconds after scanning the QR.
-tagline: >-
-  I write, speak, and build free hands-on material about application security —
-  secure code review, threat modelling, and the lessons behind real-world bugs.
 brand: AppSec Untangled
 
-# Shown in the browser tab and in link previews.
 meta_title: Mohamed AboElKheir — AppSec Untangled
 meta_description: >-
-  Talks, slides, recordings, and free hands-on application security series by
-  Mohamed AboElKheir.
+  Talks, slides, recordings, and free hands-on application security material by
+  Mohamed AboElKheir — AppSec Untangled.
 
-# Optional: drop a square photo at src/img/avatar.jpg and set the filename here.
-# Leave blank to render initials instead.
-avatar: ""
+# Square photo in src/img/. Leave blank to fall back to initials.
+avatar: mohamed.jpg
 
-# Optional CV. Leave url blank to hide the Resume section entirely.
+# Optional CV. Leave url blank to hide the button.
 resume:
   url: ""            # TODO: link the PDF from the resume project once it exists
   label: Download CV (PDF)

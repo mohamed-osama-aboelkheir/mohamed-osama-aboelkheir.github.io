@@ -1,0 +1,28 @@
+# ---------------------------------------------------------------------------
+# The short bio, as rows with a logo each. Order here = order on the page.
+#
+#   logo       file in src/img/
+#   logo_dark  optional alternative used in dark mode (for logos that only
+#              read on one background — the AWS mark is white)
+#   round      true to crop the logo into a circle
+#   lead       the text before the bolded organisation name
+#   org        bolded organisation name
+#   note       optional muted text after it
+#   links      optional list of {label, url}
+# ---------------------------------------------------------------------------
+- logo: ironclad-logo-mark.svg
+  lead: Application Security Engineer @
+  org: Ironclad
+  note: Kicked off and run the AppSec program
+
+- logo: aws-logo-dark.svg
+  logo_dark: aws-logo-light.svg
+  lead: AppSec Engineer @
+  org: AWS
+  note: ~4 years
+
+- logo: appsec-untangled-logo.jpg
+  round: true
+  lead: I write about application security at
+  org: AppSec Untangled
+  note: Blog and YouTube channel

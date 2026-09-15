@@ -1,9 +1,33 @@
 # ---------------------------------------------------------------------------
-# "Series" — the recurring bodies of work worth highlighting.
-# status: free text badge (e.g. "New challenge every 2 weeks", "In progress").
-#         Leave blank or omit for no badge.
+# "Series" cards. Order here = order on the page.
+#   url     the primary destination (whole card is clickable)
+#   logo    optional image in src/img/
+#   status  optional badge text
+#   links   the individual places the series lives
 # ---------------------------------------------------------------------------
+
+- title: Threat Modeling Handbook
+  description: >-
+    A practical, opinionated guide to threat modeling — what to actually do,
+    step by step, rather than reciting STRIDE at a whiteboard.
+  url: https://medium.com/@mohamed.osama.aboelkheir/list/threat-modeling-handbook-309a70ec273f
+  links:
+    - label: Read on Medium
+      url: https://medium.com/@mohamed.osama.aboelkheir/list/threat-modeling-handbook-309a70ec273f
+
+- title: Lessons Learned
+  description: >-
+    What real incidents, reviews, and near-misses actually teach — written up
+    so the lesson survives without the war story.
+  url: https://medium.com/@mohamed.osama.aboelkheir/list/lessons-learned-d64346d08a74
+  links:
+    - label: Read on Medium
+      url: https://medium.com/@mohamed.osama.aboelkheir/list/lessons-learned-d64346d08a74
+    - label: Watch on YouTube
+      url: https://www.youtube.com/playlist?list=PLP2wvS6pRN5CsDRoIhyTK43EfFSGVi-na
+
 - title: The Secure Code Review Challenge
+  logo: secure-code-review-challenge-logo.png
   description: >-
     A complete, working, deliberately vulnerable application every couple of
     weeks. Review it the way you would on the job, then compare against the
@@ -11,23 +35,9 @@
   url: https://github.com/mohamed-osama-aboelkheir/the-secure-code-review-challenge
   status: New challenge every 2 weeks
   links:
-    - label: Challenges
-      url: https://github.com/mohamed-osama-aboelkheir/the-secure-code-review-challenge/tree/main/challenges
-    - label: Solutions
-      url: https://github.com/mohamed-osama-aboelkheir/the-secure-code-review-challenge/tree/main/solutions
-    - label: Video walkthroughs
+    - label: Challenges on GitHub
+      url: https://github.com/mohamed-osama-aboelkheir/the-secure-code-review-challenge
+    - label: Read on Medium
+      url: https://medium.com/@mohamed.osama.aboelkheir/list/the-secure-code-review-challenge-74d95758edb3
+    - label: Watch on YouTube
       url: https://www.youtube.com/playlist?list=PLDrEVWZfxVmg
-
-- title: Lessons Learned
-  description: >-
-    What real incidents, reviews, and near-misses actually teach — written up
-    so the lesson survives without the war story.
-  url: "" # TODO
-  status: ""
-
-- title: Threat Modelling Handbook
-  description: >-
-    A practical, opinionated guide to threat modelling web applications —
-    beyond reciting STRIDE at a whiteboard.
-  url: "" # TODO
-  status: In progress

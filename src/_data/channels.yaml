@@ -1,22 +1,25 @@
 # ---------------------------------------------------------------------------
-# "Watch / Read" — the places I publish. Order here = order on the page.
-# accent: any CSS colour; used for the tile and hover glow.
-# mark:   "play" for a play triangle, otherwise the text drawn in the tile.
+# "Watch & Read" cards.
+#   logo    file in src/img/ (preferred)
+#   mark    fallback when there is no logo: "play", or the text drawn in the tile
+#   accent  tile colour, also used for the fallback mark
 # ---------------------------------------------------------------------------
 - name: YouTube
-  description: Full video walkthroughs of every challenge solution
-  url: https://www.youtube.com/playlist?list=PLDrEVWZfxVmg
+  description: AppSec Untangled — walkthroughs, series, and talk recordings
+  url: https://www.youtube.com/@AppSecUntangled
+  logo: appsec-untangled-logo.jpg
+  round: true
   accent: "#ff0033"
-  mark: play
 
 - name: Medium
   description: AppSec Untangled — long-form posts on application security
-  url: https://medium.com/appsec-untangled
+  url: https://medium.com/@mohamed.osama.aboelkheir
+  logo: appsec-untangled-logo.jpg
+  round: true
   accent: "#1a8917"
-  mark: M
 
 - name: dev.to
   description: Cross-posted articles and shorter write-ups
-  url: "" # TODO: your dev.to profile URL, e.g. https://dev.to/<username>
+  url: https://dev.to/mohamed_aboelkheir
   accent: "#3b49df"
   mark: DEV
