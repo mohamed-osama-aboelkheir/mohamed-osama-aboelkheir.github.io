@@ -28,20 +28,10 @@
 - title: "AI-Powered Security Code Reviews That Actually Work: A Threat-Model-First Methodology"
   logo: dc-state-of-the-stack-logo.png
   abstract: >-
-    AI is a great tool when you know what needs to be done but don't have time
-    to do it. If you don't have a methodology, asking AI to review your code for
-    security issues will be hit or miss at best.
-
-
-    In this talk, I present a structured methodology (with a live demo on a real
-    open-source application) that enables AI to perform more effective and
-    accurate security code reviews. The approach starts by categorizing security
-    issues into two buckets: business logic controls (things that should be
-    present, like authentication and authorization) and source-sink
-    vulnerabilities (things that shouldn't be present, like injection flaws).
-    From there, we build a threat model, translate it into a reusable security
-    wiki, and use it to drive a focused, automated review of code changes — so
-    AI isn't guessing, it's following your plan.
+    Asking AI to "review this for security" is hit or miss without a
+    methodology. This talk builds one that gives AI the right context through
+    building a threat model and a review plan — with a live demo on a real
+    open-source application.
   tags:
     - Secure Code Review
     - AI
