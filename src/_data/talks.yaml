@@ -76,8 +76,7 @@
       event_url: https://www.communitydays.org/event/2025-10-01/agentcon-washington-dc2025#sessions?id=1030265
       location: Washington, DC, US
       date: "2025-10"
-      # TODO: this slides URL looks truncated — re-copy the share link
-      slides_url: https://docs.google.com/presentation/d/1JsceEqgpABPszhrn9cuXxZIet0G7AmrtrhHL35MNlslide=id.g3844ec1bc83_0_573
+      slides_url: https://docs.google.com/presentation/d/1JsceEqgpABPszhrn9cuXxZIet0G7AmrtrhHL35MNlFs/edit?usp=sharing
 
 - title: Using Threat Modeling to Create a Robust DevSecOps Plan
   abstract: >-
