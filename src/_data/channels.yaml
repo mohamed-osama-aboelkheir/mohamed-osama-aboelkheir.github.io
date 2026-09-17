@@ -24,6 +24,9 @@ featured:
     - name: Medium
       icon: medium
       url: https://medium.com/@mohamed.osama.aboelkheir
+    - name: X
+      icon: x
+      url: https://x.com/AppsecUntangled
 
 more:
   - name: dev.to
