@@ -15,6 +15,10 @@
 #   event           required
 #   subtitle        optional — the title used at that venue, when it differed
 #   event_url       optional link to the conference / schedule
+#   logo            optional conference logo in src/img/, shown at the start
+#                   of the row
+#   logo_bg         tile colour behind that logo (default white) — set a dark
+#                   one for logos drawn in white
 #   location        optional
 #   date            "YYYY-MM-DD" or "YYYY-MM". Omit entirely for "Date TBA".
 #   status          "upcoming" to force the Upcoming badge
@@ -26,7 +30,6 @@
 # ---------------------------------------------------------------------------
 
 - title: "AI-Powered Security Code Reviews That Actually Work: A Threat-Model-First Methodology"
-  logo: dc-state-of-the-stack-logo.png
   abstract: >-
     Asking AI to "review this for security" is hit or miss without a
     methodology. This talk builds one that gives AI the right context through
@@ -40,8 +43,16 @@
       icon: youtube
       url: https://youtu.be/OC2cTxCGQIM
   appearances:
+    - event: BrainsMingle AI Summit
+      event_url: https://brainsmingle.com/programs/brainsmingle-ai-summit-2026
+      logo: brainsmingle-logo.png
+      date: "2026-10"
+      slides_url: https://docs.google.com/presentation/d/1TrIB-hpmLHZG3cnzPDTmpVTDUx8Gi6iw/edit?usp=sharing&ouid=113067167582582517544&rtpof=true&sd=true
+      pending: [video]
+
     - event: DC State of the Stack
       event_url: https://dcstateofthestack.org/
+      logo: dc-state-of-the-stack-logo.png
       location: Washington, DC, US
       date: "2026-09"
       slides_url: https://docs.google.com/presentation/d/1T3O84RrNyIeXlXNGExH3bSV0mUMJzrd6/edit?usp=sharing
@@ -66,12 +77,15 @@
     - event: The Elephant in AppSec
       subtitle: How AI Agents' Capabilities Are Being Abused
       event_url: https://www.theelephantinappsec.com/schedule
+      logo: elephant-in-appsec-logo.png
+      logo_bg: "#0b1220"
       date: "2026-01"
       slides_url: https://docs.google.com/presentation/d/1EZej7U50ALlFRfjc4mhCDye4A4f2dS80tugJFD59Dno/edit?usp=sharing
 
     - event: AgentCon DC
       subtitle: "Exploring AI Agent Authorization Issues"
       event_url: https://www.communitydays.org/event/2025-10-01/agentcon-washington-dc-2025#sessions?id=1030265
+      logo: agentcon-dc-logo.png
       location: Washington, DC, US
       date: "2025-10"
       slides_url: https://docs.google.com/presentation/d/1JsceEqgpABPszhrn9cuXxZIet0G7AmrtrhHL35MNlFs/edit?usp=sharing
@@ -85,11 +99,15 @@
     - DevSecOps
   appearances:
     - event: DevSecCon
+      logo: devseccon-logo.png
+      logo_bg: "#030328"
       date: "2024-07"
       slides_url: https://docs.google.com/presentation/d/1vW2Rqwu_F2XyvOrBom-iw9LghybKEt_cxwaGgm-4S3k/edit?usp=sharing
       recording_url: https://www.youtube.com/watch?v=XvraqRRjHjQ
 
     - event: ThreatModCon
+      logo: threatmodcon-logo.png
+      logo_bg: "#000"
       location: Lisbon, PT
       date: "2024-06"
       slides_url: https://docs.google.com/presentation/d/16X3cuOmHrvEuGuAq1hFzXsR366e24XDCexHYm59Lxpg/edit?usp=sharing

@@ -242,7 +242,19 @@ a.card:hover, .card.linked:hover {
   padding: 10px 0;
   border-top: 1px solid var(--line);
 }
-.venue { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; font-size: 14px; }
+.venue-logo {
+  flex: none;
+  width: 96px; min-height: 36px;
+  padding: 4px 7px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: var(--logo-bg, #fff);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+}
+.venue-logo img { max-width: 100%; max-height: 64px; object-fit: contain; display: block; }
+.venue { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; font-size: 14px; }
 .loc { color: var(--text-dim); }
 .when { color: var(--text-faint); font-size: 13px; font-variant-numeric: tabular-nums; }
 

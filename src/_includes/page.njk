@@ -174,6 +174,7 @@
         <ul class="appearances">
           {% for a in talk.appearances %}
           <li>
+            {% if a.logo %}<span class="venue-logo"{% if a.logo_bg %} style="--logo-bg: {{ a.logo_bg }}"{% endif %}><img src="/img/{{ a.logo }}" alt="{{ a.event }}" loading="lazy"></span>{% endif %}
             <span class="venue">
               <strong>{% if a.event_url %}<a href="{{ a.event_url }}">{{ a.event }}</a>{% else %}{{ a.event }}{% endif %}</strong>
               {% if a.location %}<span class="loc">{{ a.location }}</span>{% endif %}
