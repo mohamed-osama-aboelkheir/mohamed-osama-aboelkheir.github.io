@@ -29,6 +29,27 @@
 #                   list once you set the matching URL.
 # ---------------------------------------------------------------------------
 
+- title: "I Tested Different Prompt Injection Mitigations, Here Is What Actually Works"
+  abstract: >-
+    Prompt injection mitigations, put to the test. An experiment comparing
+    the common defenses against real injection attempts to see which ones
+    hold up and which ones only look like they do.
+  tags:
+    - Prompt Injection
+    - AI
+  links:
+    - label: Experiment repo
+      icon: github
+      url: https://github.com/mohamed-osama-aboelkheir/ai-prompt-injection-experiment
+  appearances:
+    - event: TechBash 2026
+      event_url: https://techbash.com/
+      logo: techbash-logo.png
+      logo_bg: "#0b1220"
+      location: Pocono Manor, PA, US
+      date: "2026-10"
+      slides_url: https://docs.google.com/presentation/d/124zMtkgLxUqz91HvBPZjVjughZo6jAqQ/edit?usp=sharing&ouid=113067167582582517544&rtpof=true&sd=true
+
 - title: "AI-Powered Security Code Reviews That Actually Work: A Threat-Model-First Methodology"
   abstract: >-
     Asking AI to "review this for security" is hit or miss without a
@@ -76,6 +97,14 @@
       icon: medium
       url: https://medium.com/p/64444e002316
   appearances:
+    - event: TechBash 2026
+      event_url: https://techbash.com/
+      logo: techbash-logo.png
+      logo_bg: "#0b1220"
+      location: Pocono Manor, PA, US
+      date: "2026-10"
+      slides_url: https://docs.google.com/presentation/d/1QwVHxE4UViHgEVnpPkwZ3d02b-7nFPE5UfnD4FOiXr0/edit?usp=sharing
+
     - event: The Elephant in AppSec
       subtitle: How AI Agents' Capabilities Are Being Abused
       event_url: https://www.theelephantinappsec.com/schedule
