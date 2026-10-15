@@ -96,6 +96,9 @@
     - label: Related blog post
       icon: medium
       url: https://medium.com/p/64444e002316
+    - label: Example repo
+      icon: github
+      url: https://github.com/mohamed-osama-aboelkheir/ai_agent_confused_deputy_example
   appearances:
     - event: TechBash 2026
       event_url: https://techbash.com/
