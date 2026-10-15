@@ -17,3 +17,13 @@ npx qrcode -o qr/portfolio-qr.png -t png -e H -m 2 -w 2000 "https://mohamed-osam
 
 Attaching a custom domain later does **not** invalidate this code: GitHub redirects
 `mohamed-osama-aboelkheir.github.io` to the custom domain.
+
+## Per-talk QR codes
+
+For a code that opens the page with one talk pinned at the top (see the main README),
+encode the share link instead:
+
+```bash
+URL="https://mohamed-osama-aboelkheir.github.io/?talk=confused-deputy&at=techbash-2026"
+npx qrcode -o qr/confused-deputy-techbash-2026.svg -t svg -e H -m 2 "$URL"
+```

@@ -55,6 +55,19 @@ talk given three times renders once, with three venues beneath it:
 
 Talks sort themselves by their **most recent** appearance, so the file order doesn't matter.
 
+### Per-talk share link
+
+Give a talk a short `slug:` and this link pins it in a highlighted box above everything else:
+
+```
+https://mohamed-osama-aboelkheir.github.io/?talk=confused-deputy
+https://mohamed-osama-aboelkheir.github.io/?talk=confused-deputy&at=techbash-2026
+```
+
+`&at=` keeps only that venue's row; it's the event name lowercased with spaces turned
+into hyphens. An unknown slug just shows the normal page. For a QR code for the link, see
+[`qr/README.md`](qr/README.md).
+
 ### Unfilled links
 
 Any entry with an empty `url` renders greyed out with a `SOON` badge instead of a dead

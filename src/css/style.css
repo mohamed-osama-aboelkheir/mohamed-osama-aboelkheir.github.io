@@ -270,6 +270,23 @@ a.card:hover, .card.linked:hover {
 }
 .actions a:hover { border-color: var(--accent); color: var(--accent); }
 
+/* ---------- spotlight: ?talk=<slug> pins one talk above the hero ---------- */
+
+.spotlight { margin: 0 0 28px; }
+.spotlight[hidden] { display: none; }
+.spotlight-label {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.spotlight .talk {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--glow);
+}
+
 /* ---------- connect ---------- */
 
 .connect { display: flex; flex-wrap: wrap; gap: 10px; }

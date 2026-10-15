@@ -5,6 +5,11 @@
 #
 # Per talk:
 #   title, abstract
+#   slug            short id for the share link: ?talk=<slug> pins this talk
+#                   in a box at the top of the page. Add &at=<event-slug> (the
+#                   event name lowercased and hyphenated, e.g. techbash-2026)
+#                   to show only that venue's row. Defaults to the slugified
+#                   title — set it explicitly so the URL/QR stays short.
 #   logo            optional image in src/img/, shown beside the title
 #   slides_url      canonical deck, used when an appearance has no override
 #   recording_url   canonical recording, same idea
@@ -30,6 +35,7 @@
 # ---------------------------------------------------------------------------
 
 - title: "I Tested Different Prompt Injection Mitigations, Here Is What Actually Works"
+  slug: prompt-injection
   abstract: >-
     Prompt injection mitigations, put to the test. An experiment comparing
     the common defenses against real injection attempts to see which ones
@@ -51,6 +57,7 @@
       slides_url: https://docs.google.com/presentation/d/124zMtkgLxUqz91HvBPZjVjughZo6jAqQ/edit?usp=sharing&ouid=113067167582582517544&rtpof=true&sd=true
 
 - title: "AI-Powered Security Code Reviews That Actually Work: A Threat-Model-First Methodology"
+  slug: ai-code-review
   abstract: >-
     Asking AI to "review this for security" is hit or miss without a
     methodology. This talk builds one that gives AI the right context through
@@ -83,6 +90,7 @@
       pending: [video]
 
 - title: Are AI Agents the Ultimate Confused Deputy?
+  slug: confused-deputy
   abstract: >-
     How AI agents' capabilities are being abused, and the authorization gaps
     that make an agent a willing deputy for someone else's instructions.
@@ -125,6 +133,7 @@
       slides_url: https://docs.google.com/presentation/d/1JsceEqgpABPszhrn9cuXxZIet0G7AmrtrhHL35MNlFs/edit?usp=sharing
 
 - title: Using Threat Modeling to Create a Robust DevSecOps Plan
+  slug: threat-modeling-devsecops
   abstract: >-
     Turning a threat model into an actual DevSecOps plan — so the tooling you
     roll out is driven by the threats you have, not by a vendor checklist.

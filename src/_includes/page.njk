@@ -62,6 +62,11 @@
 
 <main>
 
+  {# Filled by the script below when the URL has ?talk=<slug>[&at=<event>]. #}
+  <section class="spotlight" id="spotlight" hidden aria-label="Talk resources">
+    <p class="spotlight-label">From the talk you just saw</p>
+  </section>
+
   <header class="hero">
     <div class="avatar">
       {% if site.avatar %}<img src="/img/{{ site.avatar }}" alt="{{ site.name }}">
@@ -157,7 +162,7 @@
     <h2>Talks</h2>
     <div class="talks">
       {% for talk in talks | sortTalks %}
-      <article class="talk">
+      <article class="talk" id="{{ talk.slug or (talk.title | slugify) }}">
         <div class="talk-head">
           {% if talk.logo %}{{ logo(talk, "talk-logo") }}{% endif %}
           <h3>{{ talk.title }}</h3>
@@ -173,7 +178,7 @@
         {% endif %}
         <ul class="appearances">
           {% for a in talk.appearances %}
-          <li>
+          <li data-event="{{ a.event | slugify }}">
             {% if a.logo %}<span class="venue-logo"{% if a.logo_bg %} style="--logo-bg: {{ a.logo_bg }}"{% endif %}><img src="/img/{{ a.logo }}" alt="{{ a.event }}" loading="lazy"></span>{% endif %}
             <span class="venue">
               <strong>{% if a.event_url %}<a href="{{ a.event_url }}">{{ a.event }}</a>{% else %}{{ a.event }}{% endif %}</strong>
@@ -218,3 +223,25 @@
   </footer>
 
 </main>
+
+<script>
+  // ?talk=<slug> copies that talk's card into the spotlight box at the top;
+  // &at=<event-slug> narrows the copy to the one venue's row.
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var slug = params.get("talk");
+    var talk = slug && document.getElementById(slug);
+    if (!talk || !talk.classList.contains("talk")) return;
+
+    var copy = talk.cloneNode(true);
+    copy.removeAttribute("id");
+    var at = params.get("at");
+    var rows = copy.querySelectorAll(".appearances li");
+    var match = at && copy.querySelector('.appearances li[data-event="' + CSS.escape(at) + '"]');
+    if (match) rows.forEach(function (li) { if (li !== match) li.remove(); });
+
+    var box = document.getElementById("spotlight");
+    box.appendChild(copy);
+    box.hidden = false;
+  })();
+</script>
