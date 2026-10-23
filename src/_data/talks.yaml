@@ -95,7 +95,8 @@
   appearances:
     - event: OWASP LASCON 2026
       event_url: https://lascon.org/
-      logo: owasp-lascon-logo.svg
+      logo: lascon-logo.png
+      logo_bg: "#000"
       location: Austin, TX, US
       date: "2026-10-29"
 
