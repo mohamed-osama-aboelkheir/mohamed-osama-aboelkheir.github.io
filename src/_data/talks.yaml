@@ -34,6 +34,25 @@
 #                   list once you set the matching URL.
 # ---------------------------------------------------------------------------
 
+- title: 'Beyond STRIDE: The "Doors, Windows & Holes" Methodology for Threat Modeling Web Apps'
+  slug: beyond-stride
+  abstract: >-
+    STRIDE tells you how to categorize threats, not where to find them. A
+    65-minute workshop on the "Doors, Windows & Holes" method for finding every
+    entry point of a web app, obvious and hidden, paired with a two-bucket
+    model (business-logic controls vs. source-to-sink traces) to find threats
+    and their mitigations, demonstrated live on a sample web app.
+  tags:
+    - Threat Modeling
+    - Workshop
+  appearances:
+    - event: ThreatModCon San Francisco 2026
+      event_url: https://www.threatmodcon.com/san-francisco-2026
+      logo: threatmodcon-2026-logo.png
+      logo_bg: "#000"
+      location: San Francisco, CA, US
+      date: "2026-11-07"
+
 - title: "I Tested Different Prompt Injection Mitigations, Here Is What Actually Works"
   slug: prompt-injection
   abstract: >-
@@ -74,6 +93,12 @@
       icon: claude
       url: https://github.com/mohamed-osama-aboelkheir/appsec-untangled-resources
   appearances:
+    - event: OWASP LASCON 2026
+      event_url: https://lascon.org/
+      logo: owasp-lascon-logo.svg
+      location: Austin, TX, US
+      date: "2026-10-29"
+
     - event: BrainsMingle AI Summit
       event_url: https://brainsmingle.com/programs/brainsmingle-ai-summit-2026
       logo: brainsmingle-logo.png
