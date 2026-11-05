@@ -55,6 +55,9 @@
     - label: Exercise (custom emails & reminders)
       icon: notion
       url: https://typical-braid-834.notion.site/Threat-Model-Exercise-TicketCon-custom-emails-reminders-40d8a015626281568f15e2c4a3e35f9b
+    - label: Exercise handout (PDF)
+      icon: google-drive
+      url: https://drive.google.com/file/d/1uAjmiTIviFe3UpSWdSvxHWzxH71rtfZh/view?usp=sharing
   appearances:
     - event: ThreatModCon San Francisco 2026
       event_url: https://www.threatmodcon.com/san-francisco-2026
@@ -62,6 +65,7 @@
       logo_bg: "#000"
       location: San Francisco, CA, US
       date: "2026-11-07"
+      slides_url: https://docs.google.com/presentation/d/1mDJm5P3y85CMT-PQ4_b67ZbEJRiWbudz/edit?usp=sharing&ouid=113067167582582517544&rtpof=true&sd=true
 
 - title: "I Tested Different Prompt Injection Mitigations, Here Is What Actually Works"
   slug: prompt-injection
