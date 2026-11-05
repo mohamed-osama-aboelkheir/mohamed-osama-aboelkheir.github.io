@@ -45,6 +45,16 @@
   tags:
     - Threat Modeling
     - Workshop
+  links:
+    - label: Threat model template
+      icon: notion
+      url: https://typical-braid-834.notion.site/Threat-Model-Template-Doors-Windows-Holes-40c8a015626281eead1fe9242f3e4870
+    - label: Worked example (TicketCon)
+      icon: notion
+      url: https://typical-braid-834.notion.site/Threat-Model-Template-Doors-Windows-Holes-TicketCon-40d8a0156262813082bee1694d4ba6b5
+    - label: Exercise (custom emails & reminders)
+      icon: notion
+      url: https://typical-braid-834.notion.site/Threat-Model-Exercise-TicketCon-custom-emails-reminders-40d8a015626281568f15e2c4a3e35f9b
   appearances:
     - event: ThreatModCon San Francisco 2026
       event_url: https://www.threatmodcon.com/san-francisco-2026
