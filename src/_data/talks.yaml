@@ -58,6 +58,10 @@
     - label: Exercise handout (PDF)
       icon: google-drive
       url: https://drive.google.com/file/d/1uAjmiTIviFe3UpSWdSvxHWzxH71rtfZh/view?usp=sharing
+    - label: Threat modeling skill (Claude Code)
+      icon: claude
+      url: https://github.com/mohamed-osama-aboelkheir/appsec-untangled-resources/tree/main/plugins/appsec-skills/skills/threat-model
+  skill_url: https://github.com/mohamed-osama-aboelkheir/appsec-untangled-resources/tree/main/plugins/appsec-skills/skills/threat-model
   appearances:
     - event: ThreatModCon San Francisco 2026
       event_url: https://www.threatmodcon.com/san-francisco-2026
