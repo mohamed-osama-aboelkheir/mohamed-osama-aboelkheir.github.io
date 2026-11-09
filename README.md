@@ -65,7 +65,20 @@ https://mohamed-osama-aboelkheir.github.io/?talk=confused-deputy&at=techbash-202
 ```
 
 `&at=` keeps only that venue's row; it's the event name lowercased with spaces turned
-into hyphens. An unknown slug just shows the normal page. For a QR code for the link, see
+into hyphens. An unknown slug just shows the normal page.
+
+**Prefer the `/t/` form when posting a link** (LinkedIn, Slack, X…). It opens the same
+page with the same box, but also gets its own link preview — the talk's title and a
+screenshot of the box — instead of the general site card:
+
+```
+https://mohamed-osama-aboelkheir.github.io/t/confused-deputy/
+https://mohamed-osama-aboelkheir.github.io/t/confused-deputy/techbash-2026/
+```
+
+Every talk and every talk-at-a-venue gets one automatically (`src/talk-pages.njk`). The
+deploy workflow renders the preview images (`og/render-talks.js`); to try it locally,
+run `npm run build && node og/render-talks.js` and look in `_site/img/og/`. For a QR code for the link, see
 [`qr/README.md`](qr/README.md).
 
 ### Unfilled links

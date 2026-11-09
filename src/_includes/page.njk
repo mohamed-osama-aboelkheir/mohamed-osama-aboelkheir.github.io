@@ -225,17 +225,18 @@
 </main>
 
 <script>
-  // ?talk=<slug> copies that talk's card into the spotlight box at the top;
+  // ?talk=<slug> (or a /t/<slug>/ share page) copies that talk's card into the spotlight box at the top;
   // &at=<event-slug> narrows the copy to the one venue's row.
   (function () {
+    // Share pages under /t/ bake the talk in; ?talk=… still works anywhere.
     var params = new URLSearchParams(location.search);
-    var slug = params.get("talk");
+    var slug = params.get("talk") || {{ (spotlight_talk or "") | dump | safe }};
     var talk = slug && document.getElementById(slug);
     if (!talk || !talk.classList.contains("talk")) return;
 
     var copy = talk.cloneNode(true);
     copy.removeAttribute("id");
-    var at = params.get("at");
+    var at = params.get("at") || {{ (spotlight_at or "") | dump | safe }};
     var rows = copy.querySelectorAll(".appearances li");
     var match = at && copy.querySelector('.appearances li[data-event="' + CSS.escape(at) + '"]');
     if (match) rows.forEach(function (li) { if (li !== match) li.remove(); });

@@ -25,6 +25,12 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      # Link-preview images for the /t/ share pages: a screenshot of each
+      # talk's box, taken with the runner's own Chrome.
+      - run: npm install --no-save playwright-core@1.63.0
+      - run: node og/render-talks.js
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

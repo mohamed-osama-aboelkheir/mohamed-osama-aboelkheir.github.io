@@ -1,0 +1,33 @@
+---
+pagination:
+  data: talkPages
+  size: 1
+  alias: entry
+eleventyComputed:
+  talkSlug: "{{ entry.talk.slug or (entry.talk.title | slugify) }}"
+  eventSlug: "{% if entry.appearance %}{{ entry.appearance.event | slugify }}{% endif %}"
+permalink: "/t/{{ entry.talk.slug or (entry.talk.title | slugify) }}/{% if entry.appearance %}{{ entry.appearance.event | slugify }}/{% endif %}"
+eleventyExcludeFromCollections: true
+---
+{#- The full page with this talk already pinned in the spotlight box, so a link
+    preview (LinkedIn, Slack, X…) can show the talk instead of the site card. -#}
+{%- set page_title = entry.talk.title -%}
+{%- if entry.appearance -%}
+  {%- set page_description = "Slides and resources from " + entry.appearance.event + "." -%}
+{%- else -%}
+  {%- set page_description = "Slides and resources for this talk." -%}
+{%- endif -%}
+{%- set page_path = "/t/" + talkSlug + "/" + (eventSlug + "/" if eventSlug else "") -%}
+{%- set page_image = "/img/og/" + talkSlug + ("--" + eventSlug if eventSlug else "") + ".png" -%}
+{%- set spotlight_talk = talkSlug -%}
+{%- set spotlight_at = eventSlug -%}
+<!doctype html>
+<html lang="en">
+<head>
+{% include "head.njk" %}
+{% if site.theme %}<link rel="stylesheet" href="/css/themes/{{ site.theme }}.css">{% endif %}
+</head>
+<body>
+{% include "page.njk" %}
+</body>
+</html>

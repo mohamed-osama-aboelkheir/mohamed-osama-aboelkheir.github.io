@@ -1,18 +1,21 @@
+{%- set og_title = page_title or site.meta_title or site.name -%}
+{%- set og_description = page_description or site.meta_description -%}
+{%- set og_url = site.url + (page_path or "/") -%}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ site.meta_title or site.name }}</title>
-<meta name="description" content="{{ site.meta_description }}">
-<meta property="og:title" content="{{ site.meta_title or site.name }}">
-<meta property="og:description" content="{{ site.meta_description }}">
-<meta property="og:type" content="profile">
-<meta property="og:url" content="{{ site.url }}/">
+<title>{{ og_title }}</title>
+<meta name="description" content="{{ og_description }}">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ og_description }}">
+<meta property="og:type" content="{{ 'article' if page_title else 'profile' }}">
+<meta property="og:url" content="{{ og_url }}">
 <meta property="og:site_name" content="{{ site.brand or site.name }}">
-<meta property="og:image" content="{{ site.url }}/img/og-card.png">
+<meta property="og:image" content="{{ site.url }}{{ page_image or '/img/og-card.png' }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{{ site.name }} — {{ site.headline }}">
+<meta property="og:image:alt" content="{{ og_title }}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="{{ site.url }}/">
+<link rel="canonical" href="{{ og_url }}">
 <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/img/favicon-512.png">

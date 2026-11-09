@@ -10,6 +10,8 @@
 #                   event name lowercased and hyphenated, e.g. techbash-2026)
 #                   to show only that venue's row. Defaults to the slugified
 #                   title — set it explicitly so the URL/QR stays short.
+#                   The same box is also at /t/<slug>/ and /t/<slug>/<event-slug>/,
+#                   which get their own LinkedIn/Slack link preview.
 #   logo            optional image in src/img/, shown beside the title
 #   slides_url      canonical deck, used when an appearance has no override
 #   recording_url   canonical recording, same idea
