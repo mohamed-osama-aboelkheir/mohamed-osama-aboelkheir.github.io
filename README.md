@@ -78,6 +78,10 @@ remove it entirely; empty a whole file's list and its section disappears.
 
 - **Images:** drop files in `src/img/`, reference as `/img/<name>`. A square photo at
   `src/img/avatar.jpg` + `avatar: avatar.jpg` in `site.yaml` replaces the initials circle.
+- **Link preview** (LinkedIn, Slack, X…): `src/img/og-card.png`, 1200×630, rendered
+  from `og/card.html`. After editing the card, run `node og/render.js` and commit the
+  PNG. If a custom domain is attached, update `url` in `site.yaml`. LinkedIn caches
+  previews: re-scrape at <https://www.linkedin.com/post-inspector/>.
 - **Colours / layout:** `src/css/style.css`. Light and dark themes both defined there.
 - **No `pathPrefix`:** this repo is a *user* site (`<username>.github.io`), served from
   the root. If you ever move this to a project repo, add

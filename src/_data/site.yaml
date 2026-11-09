@@ -8,6 +8,10 @@ brand: AppSec Untangled
 # Stylesheet layered over style.css — a file in src/css/themes/.
 theme: ink
 
+# Absolute site address, no trailing slash — link previews (LinkedIn, Slack,
+# X) need absolute URLs for the page and its preview image.
+url: https://mohamed-osama-aboelkheir.github.io
+
 meta_title: Mohamed AboElKheir — AppSec Untangled
 meta_description: >-
   Talks, slides, recordings, and free hands-on application security material by
