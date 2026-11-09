@@ -246,6 +246,27 @@
     var head = copy.querySelector(".talk-head");
     if (list && head) head.after(list);
 
+    // With a single venue, gather everything into one row of links under it:
+    // that venue's slides / video / skill first, then the talk's own links,
+    // skipping any that point at the same URL.
+    var venues = copy.querySelectorAll(".appearances li");
+    if (list && venues.length === 1) {
+      var links = copy.querySelector(".links");
+      if (!links) {
+        links = document.createElement("p");
+        links.className = "links";
+      }
+      var seen = {};
+      links.querySelectorAll("a").forEach(function (a) { seen[a.href] = a; });
+      var chips = venues[0].querySelectorAll(".actions > a, .actions > .action-soon");
+      for (var i = chips.length - 1; i >= 0; i--) {
+        var chip = chips[i];
+        if (chip.href && seen[chip.href]) seen[chip.href].remove();
+        links.prepend(chip);
+      }
+      list.after(links);
+    }
+
     var box = document.getElementById("spotlight");
     box.appendChild(copy);
     box.hidden = false;
