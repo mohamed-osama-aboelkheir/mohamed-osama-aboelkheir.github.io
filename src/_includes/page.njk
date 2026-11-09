@@ -240,6 +240,12 @@
     var match = at && copy.querySelector('.appearances li[data-event="' + CSS.escape(at) + '"]');
     if (match) rows.forEach(function (li) { if (li !== match) li.remove(); });
 
+    // In the spotlight, the venue row (slides, video, skill for the talk just
+    // given) comes first, right under the title, ahead of the shared links.
+    var list = copy.querySelector(".appearances");
+    var head = copy.querySelector(".talk-head");
+    if (list && head) head.after(list);
+
     var box = document.getElementById("spotlight");
     box.appendChild(copy);
     box.hidden = false;
